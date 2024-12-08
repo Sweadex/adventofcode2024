@@ -1,16 +1,13 @@
-from typing import Tuple
-
 l1_e = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
 l2_e = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
 
-def extract_str_from_file(file_path: str) -> list[str]:
-    str_list = []
+def extract_str_from_file(file_path: str) -> str:
+    text = ""
     with open(file_path) as f:
-        for line in f:
-            str_list.append(line)
-    return str_list
-
-
+        for line in str.split(f.read(), "\n"):
+            text += line
+    return text
+            
 
 def is_correct_number(txt: str, index: int) -> int:
     for i in range(max(3,len(txt))):
@@ -39,7 +36,7 @@ def get_mul(txt: str) -> int | None:
 
     return first_num * second_num
 
-def is_do(txt: str, i_mul: int, do: bool) -> bool | None:
+def is_do(txt: str, i_mul: int, do: bool) -> bool:
     try:
         i_do = txt.index("do()")
     except ValueError:
@@ -67,13 +64,7 @@ def get_somme_of_all_mult(txt: str, with_do: bool):
         txt = txt[i_mul:]
     return somme_of_mult
 
-lines = extract_str_from_file("input_day3.txt")
-text = ""
-for i in range(len(lines)):
-    if (i == len(lines)-1):
-        text += lines[i]
-    else:
-        text += lines[i][:-1]
+text = extract_str_from_file("input_day3.txt")
 
 print(get_somme_of_all_mult(text, False))
 print(get_somme_of_all_mult(text, True))

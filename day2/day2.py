@@ -34,8 +34,8 @@ def is_increase(list: list[int], tolerance: int) -> bool:
             tolerance -= 1
             if tolerance < 0:
                 return False
-            #print(list_cpy, "->" ,is_increase(list_cpy, tolerance) and is_min_and_max(list_cpy, MIN, MAX))
-            #print(list_cpy2, "->" ,is_increase(list_cpy2, tolerance) and is_min_and_max(list_cpy, MIN, MAX))
+            #print(list_cpy, "->" ,is_increase(list_cpy, tolerance), is_min_and_max(list_cpy, MIN, MAX))
+            #print(list_cpy2, "->" ,is_increase(list_cpy2, tolerance), is_min_and_max(list_cpy, MIN, MAX))
             return ((is_increase(list_cpy, tolerance) and is_min_and_max(list_cpy, MIN, MAX)) or 
                     (is_increase(list_cpy2, tolerance) and is_min_and_max(list_cpy2, MIN, MAX)))
 
@@ -52,8 +52,8 @@ def is_decrease(list: list[int], tolerance: int) -> bool:
             tolerance -= 1
             if tolerance < 0:
                 return False
-            #print(list_cpy, "->" ,is_decrease(list_cpy, tolerance) and is_min_and_max(list_cpy, MIN, MAX))
-            #print(list_cpy2, "->" ,is_decrease(list_cpy2, tolerance) and is_min_and_max(list_cpy2, MIN, MAX))
+            #print(list_cpy, "->" ,is_decrease(list_cpy, tolerance), is_min_and_max(list_cpy, MIN, MAX))
+            #print(list_cpy2, "->" ,is_decrease(list_cpy2, tolerance), is_min_and_max(list_cpy2, MIN, MAX))
             return ((is_decrease(list_cpy, tolerance) and is_min_and_max(list_cpy, MIN, MAX)) or
                     (is_decrease(list_cpy2, tolerance) and is_min_and_max(list_cpy2, MIN, MAX)))
 
@@ -87,7 +87,7 @@ print(is_safe(l4_e, TOLERANCE))
 print(is_safe(l5_e, TOLERANCE))
 print(is_safe(l6_e, TOLERANCE))
 
-# input
+# input (try: 646)
 liste = extract_list_from_file("input_day2.csv")
 number_of_safe_reports = 0
 for val in liste:
